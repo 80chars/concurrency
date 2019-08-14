@@ -102,7 +102,7 @@ class ProducerConsumer {
         Thread consumerT = new Thread(c);
         consumerT.start();
         final int PRODS =  ProducerConsumerConstants.TOTAL_PRODS;
-        Thread [] producers = new Thread[10];
+        Thread [] producers = new Thread[PRODS];
         int i = 0;
         while (i < PRODS) {
             producers[i] = new Thread(new Producer(mti, i+1));
@@ -111,7 +111,6 @@ class ProducerConsumer {
         }
         try {
             consumerT.join();
-            int ctr = 0;
             for (Thread t : producers) {
                 t.join();
             }
